@@ -6,9 +6,9 @@ public class Rot13 {
 
     public static void main(String[] args) {
         System.out.println("Introduce una palabra para cifrar :");
-        String entrada = Entrada.readLine();
-        String resultado = xifraRot13(entrada);
-        System.out.println("El mensaje :" + entrada + "se ha cifrado  a " + resultado);
+        /*String entrada = Entrada.readLine();*/
+        //String resultado = xifraRot13(entrada);
+       // System.out.println("El mensaje :" + entrada + "se ha cifrado  a " + resultado);
         
         
     }
