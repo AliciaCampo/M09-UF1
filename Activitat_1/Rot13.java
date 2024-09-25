@@ -4,13 +4,13 @@ public class Rot13 {
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
         'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-        'y', 'z', 'á', 'é', 'í', 'ó', 'ú', 'ñ', 'ç'
+        'y', 'z', 'á', 'à' , 'é', 'è' , 'í', 'ì', 'ó', 'ò', 'ú', 'ù', 'ñ', 'ç'
     };
     public static final char[] diccionarioMax = {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
         'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
         'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-        'Y', 'Z', 'Á', 'É', 'Í', 'Ó', 'Ú', 'Ñ', 'Ç'
+        'Y', 'Z', 'Á', 'À','È', 'É', 'Í','Ì', 'Ó', 'Ò', 'Ú', 'Ù' , 'Ñ', 'Ç'
     };
     public static void main(String[] args) {
         String entrada = "El conocimiento es la llave del éxito.";
