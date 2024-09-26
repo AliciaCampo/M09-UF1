@@ -71,14 +71,13 @@ public class RotX {
         }
         return letra;
     }
-    public  static String forcaBrutaRotX (String mensajeCifrado){
-        StringBuilder resultado = new StringBuilder() ;
-        int longitudAlfabeto = DICCIONARIO_MAX.length ;
-        for ( int i = 0; i <= longitudAlfabeto ; i ++){
+    public static String forcaBrutaRotX(String mensajeCifrado) {
+        int longitudAlfabeto = DICCIONARIO_MAX.length;
+        for (int i = 0; i <= longitudAlfabeto; i++) {
             String textoDescifrado = desxifraRotX(mensajeCifrado, i);
-            resultado.append("Desplazamiento: ").append(i);
-            resultado.append(", Texto descifrado: ").append(textoDescifrado);
+            System.out.println("Desplazamiento: " + i + ", Texto descifrado: " + textoDescifrado);
         }
-        return resultado.toString();
+  
+        return ""; 
     }
 }
