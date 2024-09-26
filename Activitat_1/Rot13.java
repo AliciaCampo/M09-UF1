@@ -34,7 +34,6 @@ public class Rot13 {
                 codificado += letra;
             }
         }
-        
         return codificado;
     }
     public static String desxifraRot13(String mensaje) {
