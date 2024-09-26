@@ -1,12 +1,12 @@
 package Activitat_1;
 public class Rot13 {
-    public static final char[] diccionarioMin = {
+    public static final char[] DICCIONARIO_MIN = {
         'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
         'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
         'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
         'y', 'z', 'á', 'à' , 'é', 'è' , 'í', 'ì', 'ó', 'ò', 'ú', 'ù', 'ñ', 'ç'
     };
-    public static final char[] diccionarioMax = {
+    public static final char[] DICCIONARIO_MAX = {
         'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
         'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
         'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
@@ -25,10 +25,10 @@ public class Rot13 {
         for (int i = 0; i < mensaje.length(); i++) {
             char letra = mensaje.charAt(i);
             if (Character.isLowerCase(letra)) {
-                codificado += desplazarRot13(letra, diccionarioMin, 13);
+                codificado += desplazarRot13(letra, DICCIONARIO_MIN, 13);
             } 
             else if (Character.isUpperCase(letra)) {
-                codificado += desplazarRot13(letra, diccionarioMax, 13);
+                codificado += desplazarRot13(letra, DICCIONARIO_MAX, 13);
             } 
             else {
                 codificado += letra;
@@ -42,10 +42,10 @@ public class Rot13 {
         for (int i = 0; i < mensaje.length(); i++) {
             char letra = mensaje.charAt(i);
             if (Character.isLowerCase(letra)) {
-                descodificado += desplazarRot13(letra, diccionarioMin, -13);
+                descodificado += desplazarRot13(letra, DICCIONARIO_MIN, -13);
             } 
             else if (Character.isUpperCase(letra)) {
-                descodificado += desplazarRot13(letra, diccionarioMax, -13);
+                descodificado += desplazarRot13(letra, DICCIONARIO_MAX, -13);
             } 
             else {
                 descodificado += letra;
