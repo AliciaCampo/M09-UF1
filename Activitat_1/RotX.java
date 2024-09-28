@@ -16,37 +16,37 @@ public class RotX {
         System.err.println("Si queremos descifrar el mensaje sin sabre la rotación ");
         System.out.println(forcaBrutaRotX(resultadoCifrado));
     }
-    public static String xifraRotX(String mensaje , int rotacion) {
-        String codificado = "";
+    public static String xifraRotX(String mensaje, int rotacion) {
+        StringBuilder codificado = new StringBuilder(); 
         for (int i = 0; i < mensaje.length(); i++) {
             char letra = mensaje.charAt(i);
             if (Character.isLowerCase(letra)) {
-                codificado += desplazarRot13(letra, DICCIONARIO_MIN, rotacion);
-            } 
+                codificado.append(desplazarRot13(letra, DICCIONARIO_MIN, rotacion)); 
+            }
             else if (Character.isUpperCase(letra)) {
-                codificado += desplazarRot13(letra, DICCIONARIO_MAX, rotacion);
-            } 
+                codificado.append(desplazarRot13(letra, DICCIONARIO_MAX, rotacion)); 
+            }
             else {
-                codificado += letra;
+                codificado.append(letra); 
             }
         }
-        return codificado;
+        return codificado.toString(); 
     }
     public static String desxifraRotX(String mensaje , int rotacion) {
-        String descodificado = "";
+        StringBuilder descodificado = new StringBuilder();
         for (int i = 0; i < mensaje.length(); i++) {
             char letra = mensaje.charAt(i);
             if (Character.isLowerCase(letra)) {
-                descodificado += desplazarRot13(letra, DICCIONARIO_MIN, -rotacion);
+                descodificado.append(desplazarRot13(letra, DICCIONARIO_MIN, -rotacion));
             } 
             else if (Character.isUpperCase(letra)) {
-                descodificado += desplazarRot13(letra, DICCIONARIO_MAX, -rotacion);
+                descodificado.append(desplazarRot13(letra, DICCIONARIO_MAX, -rotacion));
             } 
             else {
-                descodificado += letra;
+                descodificado.append(letra);
             }
         }
-        return descodificado;
+        return descodificado.toString();
     }
     public static char desplazarRot13(char letra, char[] diccionario, int desplazamiento) {
         for (int i = 0; i < diccionario.length; i++) {
