@@ -1,4 +1,4 @@
-package Activitat_1;
+package Activitat_2;
 //programa basado en el Rot13
 public class RotX {
     public static final char[] DICCIONARIO_MIN = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyz".toCharArray();
