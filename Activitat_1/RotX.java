@@ -4,18 +4,34 @@ public class RotX {
     public static final char[] DICCIONARIO_MIN = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyz".toCharArray();
     public static final char[] DICCIONARIO_MAX = "AÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();
     public static void main(String[] args) {
-        int rotacion = 10 ;
+        // Prueba 1
+        System.out.println("==== PRUEBA 1 ====");
+        int rotacion = 10;
         String entrada = "El conocimiento es la llave del éxito.";
         System.out.println("Texto a cifrar: " + entrada);
         System.out.println("Rotación : " + rotacion);
-        String resultadoCifrado = xifraRotX(entrada , rotacion);
+        String resultadoCifrado = xifraRotX(entrada, rotacion);
         System.out.println("El mensaje '" + entrada + "' se ha cifrado a: " + resultadoCifrado);
-        String resultadoDescifrado = desxifraRotX(resultadoCifrado , rotacion);
+        String resultadoDescifrado = desxifraRotX(resultadoCifrado, rotacion);
         System.out.println("El mensaje cifrado '" + resultadoCifrado + "' se ha descifrado a: " + resultadoDescifrado);
         System.out.println();
-        System.err.println("Si queremos descifrar el mensaje sin sabre la rotación ");
+        System.err.println("Descifrar por fuerza bruta : ");
+        System.out.println(forcaBrutaRotX(resultadoCifrado));
+        // Prueba 2
+        System.out.println("==== PRUEBA 2 ====");
+        rotacion = 5;
+        entrada = "¡Hola Mundo! Esto es una prueba de cifrado.";
+        System.out.println("Texto a cifrar: " + entrada);
+        System.out.println("Rotación : " + rotacion);
+        resultadoCifrado = xifraRotX(entrada, rotacion);
+        System.out.println("El mensaje '" + entrada + "' se ha cifrado a: " + resultadoCifrado);
+        resultadoDescifrado = desxifraRotX(resultadoCifrado, rotacion);
+        System.out.println("El mensaje cifrado '" + resultadoCifrado + "' se ha descifrado a: " + resultadoDescifrado);
+        System.out.println();
+        System.err.println("Descifrar por fuerza bruta : ");
         System.out.println(forcaBrutaRotX(resultadoCifrado));
     }
+
     public static String xifraRotX(String mensaje, int rotacion) {
         StringBuilder codificado = new StringBuilder(); 
         for (int i = 0; i < mensaje.length(); i++) {
@@ -69,5 +85,4 @@ public class RotX {
         }
         return resultado.toString();
     }
-    
 }
