@@ -1,24 +1,13 @@
 package Activitat_1;
-
 //programa basado en el Rot13
 public class RotX {
-    public static final char[] DICCIONARIO_MIN = {
-        'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-        'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p',
-        'q', 'r', 's', 't', 'u', 'v', 'w', 'x',
-        'y', 'z', 'á', 'à' , 'é', 'è' , 'í', 'ì', 'ó', 'ò', 'ú', 'ù', 'ñ', 'ç'
-    };
-    //poner = "".tocharArray() para simplificar los array
-    public static final char[] DICCIONARIO_MAX = {
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
-        'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
-        'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
-        'Y', 'Z', 'Á', 'À','È', 'É', 'Í','Ì', 'Ó', 'Ò', 'Ú', 'Ù' , 'Ñ', 'Ç'
-    };
+    public static final char[] DICCIONARIO_MIN = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyz".toCharArray();
+    public static final char[] DICCIONARIO_MAX = "AÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();
     public static void main(String[] args) {
         int rotacion = 10 ;
         String entrada = "El conocimiento es la llave del éxito.";
         System.out.println("Texto a cifrar: " + entrada);
+        System.out.println("Rotación : " + rotacion);
         String resultadoCifrado = xifraRotX(entrada , rotacion);
         System.out.println("El mensaje '" + entrada + "' se ha cifrado a: " + resultadoCifrado);
         String resultadoDescifrado = desxifraRotX(resultadoCifrado , rotacion);
@@ -72,12 +61,13 @@ public class RotX {
         return letra;
     }
     public static String forcaBrutaRotX(String mensajeCifrado) {
-        int longitudAlfabeto = DICCIONARIO_MAX.length;
+        StringBuilder resultado = new StringBuilder(); 
+        int longitudAlfabeto = DICCIONARIO_MAX.length; 
         for (int i = 0; i <= longitudAlfabeto; i++) {
-            String textoDescifrado = desxifraRotX(mensajeCifrado, i);
-            System.out.println("Desplazamiento: " + i + ", Texto descifrado: " + textoDescifrado);
+            String textoDescifrado = desxifraRotX(mensajeCifrado, i); 
+            resultado.append("Desplazamiento: ").append(i).append(", Texto descifrado: ").append(textoDescifrado).append("\n");
         }
-  
-        return ""; 
+        return resultado.toString();
     }
+    
 }
