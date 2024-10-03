@@ -92,7 +92,6 @@ public class Monoalfabetic {
         System.out.println("Texto cifrado: " + textoCifrado3);
         System.out.println("Texto descifrado: " + textoDescifrado3);
         System.out.println();
-
         // Prueba 4: Texto con solo mayúsculas
         String textoOriginal4 = "EL GATO MIRA EL SOL";
         String textoCifrado4 = xifraMonoAlfa(textoOriginal4, alfabetoMinPermutado, alfabetoMaxPermutado);
@@ -102,10 +101,5 @@ public class Monoalfabetic {
         System.out.println("Texto cifrado: " + textoCifrado4);
         System.out.println("Texto descifrado: " + textoDescifrado4);
         System.out.println();
-    
-  
-    
-       
     }
-    
 }
