@@ -62,45 +62,5 @@ public class XifradorMonoalfabetic {
         }
         return -1 ;
     }
-    public static void main(String[] args) {
-        // Generamos los alfabetos permutados
-        char[] alfabetoMinPermutado = permutaAlfabet(DICCIONARIO_MIN);
-        char[] alfabetoMaxPermutado = permutaAlfabet(DICCIONARIO_MAX);
-        // Prueba 1: Texto sencillo
-        String textoOriginal1 = "Hola Mundo!";
-        String textoCifrado1 = xifraMonoAlfa(textoOriginal1, alfabetoMinPermutado, alfabetoMaxPermutado);
-        String textoDescifrado1 = desxifraMonoAlfa(textoCifrado1, alfabetoMinPermutado, alfabetoMaxPermutado);
-        System.out.println("==== PRUEBA 1 ====");
-        System.out.println("Texto original: " + textoOriginal1);
-        System.out.println("Texto cifrado: " + textoCifrado1);
-        System.out.println("Texto descifrado: " + textoDescifrado1);
-        System.out.println();
-        // Prueba 2: Texto con acentos y caracteres especiales
-        String textoOriginal2 = "¡Buenos días! ¿Cómo estás?";
-        String textoCifrado2 = xifraMonoAlfa(textoOriginal2, alfabetoMinPermutado, alfabetoMaxPermutado);
-        String textoDescifrado2 = desxifraMonoAlfa(textoCifrado2, alfabetoMinPermutado, alfabetoMaxPermutado);
-        System.out.println("==== PRUEBA 2 ====");
-        System.out.println("Texto original: " + textoOriginal2);
-        System.out.println("Texto cifrado: " + textoCifrado2);
-        System.out.println("Texto descifrado: " + textoDescifrado2);
-        System.out.println();
-        // Prueba 3: Texto con solo minúsculas
-        String textoOriginal3 = "el perro come pan";
-        String textoCifrado3 = xifraMonoAlfa(textoOriginal3, alfabetoMinPermutado, alfabetoMaxPermutado);
-        String textoDescifrado3 = desxifraMonoAlfa(textoCifrado3, alfabetoMinPermutado, alfabetoMaxPermutado);
-        System.out.println("==== PRUEBA 3 ====");
-        System.out.println("Texto original: " + textoOriginal3);
-        System.out.println("Texto cifrado: " + textoCifrado3);
-        System.out.println("Texto descifrado: " + textoDescifrado3);
-        System.out.println();
-        // Prueba 4: Texto con solo mayúsculas
-        String textoOriginal4 = "EL GATO MIRA EL SOL";
-        String textoCifrado4 = xifraMonoAlfa(textoOriginal4, alfabetoMinPermutado, alfabetoMaxPermutado);
-        String textoDescifrado4 = desxifraMonoAlfa(textoCifrado4, alfabetoMinPermutado, alfabetoMaxPermutado);
-        System.out.println("==== PRUEBA 4 ====");
-        System.out.println("Texto original: " + textoOriginal4);
-        System.out.println("Texto cifrado: " + textoCifrado4);
-        System.out.println("Texto descifrado: " + textoDescifrado4);
-        System.out.println();
-    }
+    
 }
