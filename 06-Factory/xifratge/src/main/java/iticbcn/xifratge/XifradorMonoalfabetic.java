@@ -1,6 +1,6 @@
 package iticbcn.xifratge;
 import java.util.*; 
-public class Monoalfabetic {
+public class XifradorMonoalfabetic {
     public static final char[] DICCIONARIO_MIN = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyz".toCharArray();
     public static final char[] DICCIONARIO_MAX = "AÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();
     public  static char [] permutaAlfabet(char [] alfabet) {
