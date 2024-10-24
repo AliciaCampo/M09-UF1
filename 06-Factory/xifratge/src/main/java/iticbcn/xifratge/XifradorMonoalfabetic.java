@@ -1,9 +1,9 @@
 package iticbcn.xifratge;
 import java.util.*; 
-public class XifradorMonoalfabetic {
+public class XifradorMonoalfabetic implements Xifrador {
     public static final char[] DICCIONARIO_MIN = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyz".toCharArray();
     public static final char[] DICCIONARIO_MAX = "AÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();
-    public  static char [] permutaAlfabet(char [] alfabet) {
+    public   char [] permutaAlfabet(char [] alfabet) {
         ArrayList<Character> lista =  new ArrayList<Character>();
         for (char c : alfabet){
             lista.add(c);
@@ -17,8 +17,7 @@ public class XifradorMonoalfabetic {
         }
        return arrayPermutado;
     }
-
-    public static  String xifraMonoAlfa(String texto , char [] alfabetoMin,char [] alfabetoMax ){
+    public  String xifraMonoAlfa(String texto , char [] alfabetoMin,char [] alfabetoMax ){
         StringBuilder cifrado = new StringBuilder();
         for (char c :texto.toCharArray()){
             if (Character.isLowerCase(c)) {
@@ -35,7 +34,7 @@ public class XifradorMonoalfabetic {
         }
         return cifrado.toString();
     }
-    public static  String desxifraMonoAlfa(String texto,char [] alfabetoMin,char [] alfabetoMax){
+    public  String desxifraMonoAlfa(String texto,char [] alfabetoMin,char [] alfabetoMax){
         StringBuilder descifrado = new StringBuilder();
         for (char c :texto.toCharArray()){
             if (Character.isLowerCase(c)) {
@@ -53,7 +52,7 @@ public class XifradorMonoalfabetic {
 
         return descifrado.toString();
     }
-    public static  int  buscarIndice (char letra , char[] diccionario){
+    public  int  buscarIndice (char letra , char[] diccionario){
         //con la posición dice que letra es
         for (int i = 0 ; i < diccionario.length;i++){
             if( diccionario[i]== letra){

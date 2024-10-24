@@ -1,10 +1,10 @@
 package iticbcn.xifratge;
 import java.util.*; 
-public class XifradorPolialfabetic {
+public class XifradorPolialfabetic implements Xifrador {
     public static final char[] DICCIONARIO = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyzAÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();    
     public static  int clauSecreta;
     public static Random random = new Random();
-    public  static char [] permutaAlfabet(char [] alfabet) {
+    public   char [] permutaAlfabet(char [] alfabet) {
         ArrayList<Character> lista =  new ArrayList<Character>();
         for (char c : alfabet){
             lista.add(c);
@@ -19,7 +19,7 @@ public class XifradorPolialfabetic {
        return arrayPermutado;
     }
 
-    public static String xifraPoliAlfa(String texto) {
+    public  String xifraPoliAlfa(String texto) {
         StringBuilder cifrado = new StringBuilder();
         for (char c : texto.toCharArray()) {
             char[] alfabetoPermutado = permutaAlfabet(DICCIONARIO);
@@ -28,7 +28,7 @@ public class XifradorPolialfabetic {
         }
         return cifrado.toString();
     }
-    public static String desxifraPoliAlfa(String texto) {
+    public  String desxifraPoliAlfa(String texto) {
         StringBuilder descifrado = new StringBuilder();
         for (char c : texto.toCharArray()) {
             char[] alfabetoPermutado = permutaAlfabet(DICCIONARIO);
@@ -37,7 +37,7 @@ public class XifradorPolialfabetic {
         }
         return descifrado.toString();
     }
-    public static  int  buscarIndice (char letra , char[] diccionario){
+    public int  buscarIndice (char letra , char[] diccionario){
         //con la posición dice que letra es
         for (int i = 0 ; i < diccionario.length;i++){
             if( diccionario[i]== letra){
@@ -46,7 +46,7 @@ public class XifradorPolialfabetic {
         }
         return -1 ;
     }
-    public static void initRandom(int clau){
+    public  void initRandom(int clau){
         random.setSeed(clau);
     }
     

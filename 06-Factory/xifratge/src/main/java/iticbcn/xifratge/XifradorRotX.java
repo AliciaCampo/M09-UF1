@@ -1,10 +1,8 @@
 package iticbcn.xifratge;
 //programa basado en el Rot13
-public class XifradorRotX {
+public class XifradorRotX implements Xifrador {
     public static final char[] DICCIONARIO_MIN = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyz".toCharArray();
     public static final char[] DICCIONARIO_MAX = "AÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();
-
-
     public static String xifraRotX(String mensaje, int rotacion) {
         StringBuilder codificado = new StringBuilder(); 
         for (int i = 0; i < mensaje.length(); i++) {
