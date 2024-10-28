@@ -1,25 +1,58 @@
 package iticbcn.xifratge;
-import java.util.*; 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 public class XifradorPolialfabetic implements Xifrador {
-    public static final char[] DICCIONARIO = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyzAÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();    
-    public static  int clauSecreta;
-    public static Random random = new Random();
-    public   char [] permutaAlfabet(char [] alfabet) {
-        ArrayList<Character> lista =  new ArrayList<Character>();
-        for (char c : alfabet){
+    public static final char[] DICCIONARIO = "aáàbcdçeéèfghiíìjklmnñoóòpqrstuúùüvwxyzAÁÀBCDÇEÉÈFGHIÍÌJKLMNÑOÓÒPQRSTUÚÙÜVWXYZ".toCharArray();
+    private int clauSecreta;
+    private Random random = new Random();
+    public XifradorPolialfabetic() {
+        // Constructor vacío, pero necesario para inicializar instancias.
+    }
+    private char[] permutaAlfabet(char[] alfabet) {
+        ArrayList<Character> lista = new ArrayList<>();
+        for (char c : alfabet) {
             lista.add(c);
         }
-        //para usar el Shuffling 
-        Collections.shuffle(lista,random);
-        char [] arrayPermutado = new char [alfabet.length];
-        //pasamos el alfabeto permutadoal nuevo array de char
-        for ( int a = 0 ; a < lista.size() ; a++){
+        Collections.shuffle(lista, random);
+        char[] arrayPermutado = new char[alfabet.length];
+        for (int a = 0; a < lista.size(); a++) {
             arrayPermutado[a] = lista.get(a);
         }
-       return arrayPermutado;
+        return arrayPermutado;
     }
+    @Override
+    public TextXifrat xifra(String msg, String clau) throws ClauNoSuportada {
+        try {
+            inicializaRandom(clau);
+        } catch (ClauNoSuportada e) {
+            System.out.println("La clau per xifrat Polialfabètic ha de ser un String convertible a long");
+            return null;
+        }
+        String textoCifrado = xifraPoliAlfa(msg);
+        return new TextXifrat(textoCifrado.getBytes());
+    }
+    @Override
+    public String desxifra(TextXifrat xifrat, String clau) throws ClauNoSuportada {
+        try{
+            inicializaRandom(clau);
 
-    public  String xifraPoliAlfa(String texto) {
+        }catch(ClauNoSuportada e){
+            System.out.println("La clau de Polialfabètic ha de ser un String convertible a long");
+            return null;
+        }
+        String texto = new String(xifrat.getBytes());
+        return desxifraPoliAlfa(texto);
+    }
+    private void inicializaRandom(String clau) throws ClauNoSuportada {
+        try {
+            clauSecreta = Integer.parseInt(clau);
+            random.setSeed(clauSecreta);
+        } catch (NumberFormatException e) {
+            throw new ClauNoSuportada("Clau no suportada: la clau ha de ser un enter.");
+        }
+    }
+    private String xifraPoliAlfa(String texto) {
         StringBuilder cifrado = new StringBuilder();
         for (char c : texto.toCharArray()) {
             char[] alfabetoPermutado = permutaAlfabet(DICCIONARIO);
@@ -28,7 +61,7 @@ public class XifradorPolialfabetic implements Xifrador {
         }
         return cifrado.toString();
     }
-    public  String desxifraPoliAlfa(String texto) {
+    private String desxifraPoliAlfa(String texto) {
         StringBuilder descifrado = new StringBuilder();
         for (char c : texto.toCharArray()) {
             char[] alfabetoPermutado = permutaAlfabet(DICCIONARIO);
@@ -37,17 +70,12 @@ public class XifradorPolialfabetic implements Xifrador {
         }
         return descifrado.toString();
     }
-    public int  buscarIndice (char letra , char[] diccionario){
-        //con la posición dice que letra es
-        for (int i = 0 ; i < diccionario.length;i++){
-            if( diccionario[i]== letra){
+    private int buscarIndice(char letra, char[] diccionario) {
+        for (int i = 0; i < diccionario.length; i++) {
+            if (diccionario[i] == letra) {
                 return i;
             }
         }
-        return -1 ;
+        return -1;
     }
-    public  void initRandom(int clau){
-        random.setSeed(clau);
-    }
-    
 }
