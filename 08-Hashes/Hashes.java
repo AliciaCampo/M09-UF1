@@ -1,5 +1,6 @@
 import java.security.MessageDigest;
 import java.util.HexFormat;
+
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 public class Hashes {
@@ -20,7 +21,7 @@ public class Hashes {
     }
     public String getPBKDF2AmbSalt(String pw, String salt){
         try {
-            int interaciones = 6536;
+            int interaciones = 100;
             int KeyLength = 512;
             PBEKeySpec spec = new PBEKeySpec(pw.toCharArray(), salt.getBytes(), interaciones, KeyLength);
             SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
@@ -31,17 +32,89 @@ public class Hashes {
             throw new RuntimeException("Error al crear el hash PBKDF2", e);
         }
     }
-    public String forcaBruta(String alg, String hash, String salt){
+    public String forcaBruta(String alg, String targetHash, String salt) {
+        npass = 0; // Reiniciar contador de contraseñas probadas
+        // Intentar combinaciones de longitud de 1 a 6 caracteres
+        for (int len = 1; len <= 6; len++) {
+            char[] attempt = new char[len];
 
+            // Bucles anidados para probar cada combinación de longitud `len`
+            for (int i = 0; i < abc.length; i++) {
+                attempt[0] = abc[i];
+                if (len > 1) {
+                    for (int j = 0; j < abc.length; j++) {
+                        attempt[1] = abc[j];
+                        if (len > 2) {
+                            for (int k = 0; k < abc.length; k++) {
+                                attempt[2] = abc[k];
+                                if (len > 3) {
+                                    for (int l = 0; l < abc.length; l++) {
+                                        attempt[3] = abc[l];
+                                        if (len > 4) {
+                                            for (int m = 0; m < abc.length; m++) {
+                                                attempt[4] = abc[m];
+                                                if (len > 5) {
+                                                    for (int n = 0; n < abc.length; n++) {
+                                                        attempt[5] = abc[n];
+                                                        npass++;
+                                                        if (testPassword(new String(attempt), alg, targetHash, salt)) {
+                                                            return new String(attempt);
+                                                        }
+                                                    }
+                                                } else {
+                                                    npass++;
+                                                    if (testPassword(new String(attempt), alg, targetHash, salt)) {
+                                                        return new String(attempt);
+                                                    }
+                                                }
+                                            }
+                                        } else {
+                                            npass++;
+                                            if (testPassword(new String(attempt), alg, targetHash, salt)) {
+                                                return new String(attempt);
+                                            }
+                                        }
+                                    }
+                                } else {
+                                    npass++;
+                                    if (testPassword(new String(attempt), alg, targetHash, salt)) {
+                                        return new String(attempt);
+                                    }
+                                }
+                            }
+                        } else {
+                            npass++;
+                            if (testPassword(new String(attempt), alg, targetHash, salt)) {
+                                return new String(attempt);
+                            }
+                        }
+                    }
+                } else {
+                    npass++;
+                    if (testPassword(new String(attempt), alg, targetHash, salt)) {
+                        return new String(attempt);
+                    }
+                }
+            }
+        }
+        return null; // No se encontró la contraseña
     }
-    public String getInterval(long t1, long t2){
-        long milis = t2 - t1;
-        long seconds = milis / 1000;
-        long minutes = seconds / 60;
-        seconds = seconds % 60;
-        long hours = minutes / 60;
-        minutes = minutes % 60;
-        return String.format("%d:%02d:%02d", hours, minutes, seconds);
+    public boolean testPassword(String attempt, String alg, String targetHash, String salt) {
+        String generatedHash = alg.equals("SHA-512") ? getSHA512AmbSalt(attempt, salt) : getPBKDF2AmbSalt(attempt, salt);
+        return generatedHash.equals(targetHash);
+    }
+
+    public String getInterval(long t1, long t2) {
+        long millis = t2 - t1;
+        long segundos = millis / 1000;
+        long minutos = segundos / 60;
+        long horas = minutos / 60;
+        long dias = horas / 24;
+        millis %= 1000;
+        segundos %= 60;
+        minutos %= 60;
+        horas %= 24;
+        return String.format("%d dies / %d hores / %d minuts / %d segons / %d millis", dias, horas, minutos, segundos, millis);
     }
     public String getSHA512(String pw){
         try {
@@ -57,7 +130,7 @@ public class Hashes {
         }
     }
 
-    }
+    
     public static void main(String[] args) throws Exception {
         String salt = "qpoweiruañslkdfjz";
         String pw = "aaabF!";
@@ -84,4 +157,4 @@ public class Hashes {
         }
         }
 
-}
+    }
