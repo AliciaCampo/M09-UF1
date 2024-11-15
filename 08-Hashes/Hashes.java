@@ -21,7 +21,7 @@ public class Hashes {
     }
     public String getPBKDF2AmbSalt(String pw, String salt){
         try {
-            int interaciones = 100;
+            int interaciones = 10;
             int KeyLength = 512;
             PBEKeySpec spec = new PBEKeySpec(pw.toCharArray(), salt.getBytes(), interaciones, KeyLength);
             SecretKeyFactory skf = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA512");
